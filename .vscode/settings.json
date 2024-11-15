@@ -1,7 +1,13 @@
 {
     "files.associations": {
-        "stdlib.h": "c",
         "stdbool.h": "c",
+        "stdio.h": "c",
+        "stdlib.h": "c",
+        "string.h": "c",
+        "iterator": "c",
+        "xmemory": "c",
+        "xutility": "c",
+        "math.h": "c",
         "iostream": "cpp",
         "istream": "cpp"
     }

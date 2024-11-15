@@ -1,37 +1,54 @@
 #include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+void clean(char a[])
+{
+    for (int i = 0; i <= strlen(a) - 1; i++)
+    {
+        a[i] = 0;
+    }
+}
+char *find(char **a, int size)
+{
+    int i = 0, l = 0;
+    char max[30];
+    char min[30];
+
+    for (i = 0; i <= size - 2; i++)
+    {
+        if (strlen(a[i]) > strlen(a[i + 1]))
+        {
+            strcpy(max, a[i]);
+            strcpy(min, a[i + 1]);
+            // clean(a[i+1]);
+            // clean(a[i]);
+            strcpy(a[i + 1], max);
+            strcpy(a[i], min);
+        }
+    }
+
+    return a[size - 1];
+}
+
 int main()
 {
-    int n = 0;
-    scanf("%d", &n);
-    if (n < 1)
-        printf("-1");
-    else
+    char **a;
+    a = calloc(150, sizeof(char *));
+    for (size_t i = 0; i < 150; i++)
     {
-        typedef struct
-        {
-            double zi;
-            double mu;
-            double zhi;
-        } fenshu;
-        double he = 0;
-        fenshu a[200] = {0, 0, 0.0};
-        a[0].zi = 2;
-        a[0].mu = 1;
-        double x1, x2;
-        for (size_t i = 0; i < n; i++)
-        {
-            if(i > 0){
-                a[i].zi = a[i - 1].mu + a[i - 1].zi;
-                a[i].mu = a[i - 1].zi;
-            }
-            he += a[i].zi / a[i].mu;
-        }
-
-        printf("%.1lf", he);
-        {
-
-        }
-
-        
+        a[i] = calloc(50, sizeof(char));
     }
+
+    char y;
+    int i = 0;
+    do
+    {
+        scanf("%s", a[i]);
+        i++;
+    } while ((y = getchar()) != '\n');
+    i--;
+
+    char loest[50];
+    strcpy(loest, find((char **)a, i));
+    printf("%s", loest);
 }
