@@ -32,7 +32,7 @@ int main()
     while (current_node != current_node->next)
     {
         
-        if(count == 2){
+        if(count == 3){
             count = 0;
             current_node->last->next = current_node->next;
             current_node->next->last = current_node->last;
